@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Overseer</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/modal.min.js"></script>
+    <script src="js/frames.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-item" data-modal-trigger="config">Configuration</div>
+    </nav>
+
+    <div class="modal-config" data-modal="config">
+      <form class="config-form">
+        <label>Enter every URL you want to oversee separated by a newline.</label>
+        <textarea class="js-config-form-textarea"></textarea>
+        <button class="config-form-submit js-config-form-submit">Reload Configuration</button>
+      </form>
+    </div>
+
+    <div class="frames js-frames">
+    </div>
+  </body>
+</html>

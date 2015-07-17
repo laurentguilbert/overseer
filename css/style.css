@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #252525;
+    color: #FEFEFE;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+}
+
+nav {
+    background-color: #FE5D2F;
+    background-image: url(../images/icon128.png);
+    background-position: 15px -7px;
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 30px;
+    padding-left: 100px;
+    width: 100%;
+}
+
+.nav-item {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+}
+
+.frame {
+    float: left;
+    margin: 20px 10px 0 10px;
+    text-align: center;
+}
+
+.frame iframe {
+    background-color: #FFFFFF;
+    height: 786px;
+    transform-origin: 0 0;
+    width: 1280px;
+}
+
+.frame-iframe-wrapper {
+    border: 1px solid #767676;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.modal-close {
+    top: 4px !important;
+    right: 7px !important;
+}
+
+.modal-config {
+    background-color: #FFFFFF;
+    display: none;
+    padding: 30px;
+    width: 600px;
+}
+
+.config-form label {
+    color: #888888;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.config-form textarea {
+    display: block;
+    font-size: 16px;
+    height: 400px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.config-form-submit {
+    background-color: #5CA762;
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    padding: 20px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal-close {
+  cursor: pointer;
+}
+
+.modal-close-icon {
+  color: #AAA;
+}
+
+.modal-close-icon:hover {
+  color: #666;
+}
+
+.modal-close-icon::before {
+  content: '\2715';
+  font-size: 20px;
+}

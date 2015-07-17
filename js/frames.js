@@ -42,21 +42,18 @@ function resizeFrames() {
 
 $(function() {
     var frames = [];
-    var $configTextarea = $('.js-config-form-textarea');
+    var $framesTextarea = $('.js-frames-form-textarea');
 
     chrome.storage.sync.get('frames', function(result) {
         frames = result.frames;
-        $configTextarea.val(frames.join('\n'));
+        $framesTextarea.val(frames.join('\n'));
         createFrames(frames);
     });
 
     $(window).on('resize', resizeFrames);
 
-    $('.js-config-form-submit').on('click', function() {
-        var value = $configTextarea.val();
-        if (!value) {
-            return;
-        }
+    $('.js-frames-form-submit').on('click', function() {
+        var value = $framesTextarea.val();
         frames = value.split('\n');
         // Remove empty strings from the array.
         frames = $.grep(frames, function(s) { return s; });

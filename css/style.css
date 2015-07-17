@@ -8,7 +8,8 @@ body {
     background-color: #252525;
     color: #FEFEFE;
     font-family: Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 a {
@@ -23,6 +24,24 @@ button {
     font: inherit;
     line-height: normal;
     overflow: visible;
+}
+
+input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border: none;
+    padding: 10px;
+}
+
+input,
+textarea {
+    border: 1px solid #CCCCCC;
+}
+
+label {
+    color: #888888;
+    font-weight: bold;
 }
 
 nav {
@@ -40,8 +59,12 @@ nav {
 
 .nav-item {
     cursor: pointer;
-    font-size: 14px;
+    display: inline-block;
     font-weight: bold;
+}
+
+.nav-item + .nav-item {
+    margin-left: 30px;
 }
 
 .nav-item:hover {
@@ -68,11 +91,16 @@ nav {
     width: 100%;
 }
 
+.frame-title {
+    font-weight: bold;
+}
+
 .modal-close {
     top: 4px !important;
     right: 7px !important;
 }
 
+.modal-frames,
 .modal-config {
     background-color: #FFFFFF;
     display: none;
@@ -81,24 +109,31 @@ nav {
 }
 
 .config-form label {
-    color: #888888;
+    display: inline-block;
+    width: 150px;
+}
+
+.config-form input {
+    width: 390px;
+    margin-bottom: 20px;
+}
+
+.frames-form label {
     display: block;
-    font-size: 14px;
     margin-bottom: 10px;
     text-align: center;
 }
 
-.config-form textarea {
+.frames-form textarea {
     display: block;
-    font-size: 16px;
+    font-size: 13px;
     height: 400px;
-    line-height: 30px;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
 }
 
-.config-form-submit {
+.frames-form-submit {
     background-color: #5CA762;
     border-radius: 3px;
     border: 0;
@@ -107,7 +142,6 @@ nav {
     padding: 20px;
     width: 100%;
     font-weight: bold;
-    font-size: 14px;
 }
 
 .modal-close {

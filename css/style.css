@@ -55,6 +55,7 @@ nav {
 }
 
 .frame iframe {
+    background-color: #FFFFFF;
     height: 786px;
     transform-origin: 0 0;
     width: 1280px;

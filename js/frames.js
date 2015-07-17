@@ -1,10 +1,3 @@
-/*
- * Overseer
- * https://github.com/laurentguilbert/overseer
- * Copyright (c) 2015 Laurent Guilbert
- * Released under the MIT license.
- */
-
 function createFrames(frames) {
     $('.js-frame').remove();
 

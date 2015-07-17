@@ -55,6 +55,7 @@ nav {
 }
 
 .frame iframe {
+    background-color: #FFFFFF;
     height: 786px;
     transform-origin: 0 0;
     width: 1280px;
@@ -77,6 +78,14 @@ nav {
     display: none;
     padding: 30px;
     width: 600px;
+}
+
+.config-form label {
+    color: #888888;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .config-form textarea {

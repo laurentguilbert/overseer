@@ -92,7 +92,10 @@ nav {
 }
 
 .frame-title {
+    display: block;
     font-weight: bold;
+    height: 60px;
+    overflow: hidden;
 }
 
 .modal-close {

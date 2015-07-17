@@ -10,7 +10,7 @@
   <body>
     <nav>
       <div class="nav-item" data-modal-trigger="frames">Frames</div>
-      <div class="nav-item" data-modal-trigger="config">Configuration</div>
+      <div class="nav-item" data-modal-trigger="settings">Settings</div>
     </nav>
 
     <div class="modal-frames" data-modal="frames">
@@ -24,14 +24,12 @@
       </form>
     </div>
 
-    <div class="modal-config" data-modal="config">
-      <form class="config-form">
-        <label>Auto refresh rate</label><input type="text" name="auto_refresh_rate">
-        <label>Columns</label><input type="text" name="resolution_x">
-        <label>Resolution X</label><input type="text" name="resolution_x">
-        <label>Resolution Y</label><input type="text" name="resolution_y">
-        <label>Query string</label><input type="text" name="querystring">
-        <button class="frames-form-submit js-config-form-submit">Reload Configuration</button>
+    <div class="modal-settings" data-modal="settings">
+      <form class="settings-form js-settings-form">
+        <label>Columns</label><input type="text" name="columns">
+        <label>Resolution X</label><input type="text" name="resolutionX">
+        <label>Resolution Y</label><input type="text" name="resolutionY">
+        <button class="settings-form-submit js-settings-form-submit">Reload Configuration</button>
       </form>
     </div>
 

@@ -1,4 +1,7 @@
-function createFrames(frames) {
+var frames = [];
+var settings = {};
+
+function createFrames() {
     $('.js-frame').remove();
 
     for (var i = 0; i < frames.length; i++) {
@@ -22,9 +25,9 @@ function createFrames(frames) {
 }
 
 function resizeFrames() {
-    var resolutionX = 1280;
-    var resolutionY = 786;
-    var frameWidth = ($(window).width() - 60) / 3;
+    var resolutionX = settings.resolutionX;
+    var resolutionY = settings.resolutionY;
+    var frameWidth = ($(window).width() - settings.columns * 20) / settings.columns;
     var scale = frameWidth / resolutionX;
 
     $('.js-frame').each(function() {
@@ -40,17 +43,48 @@ function resizeFrames() {
     });
 }
 
+function fillSettingsForm() {
+    var $form = $('.js-settings-form');
+    $form.find('input').each(function() {
+        $(this).val(settings[$(this).attr('name')]);
+    });
+}
+
+function updateSettings() {
+    var $form = $('.js-settings-form');
+    $form.find('input').each(function() {
+        settings[$(this).attr('name')] = $(this).val();
+    });
+    chrome.storage.sync.set({'settings': settings});
+}
+
 $(function() {
-    var frames = [];
+    var defaultSettings = {
+        columns: 3,
+        resolutionX: 1280,
+        resolutionY: 786,
+    };
+
     var $framesTextarea = $('.js-frames-form-textarea');
 
-    chrome.storage.sync.get('frames', function(result) {
-        frames = result.frames;
-        $framesTextarea.val(frames.join('\n'));
-        createFrames(frames);
+    chrome.storage.sync.get('settings', function(result) {
+        settings = result.settings || defaultSettings;
+        fillSettingsForm(settings);
+
+        chrome.storage.sync.get('frames', function(result) {
+            frames = result.frames;
+            $framesTextarea.val(frames.join('\n'));
+            createFrames();
+        });
     });
 
     $(window).on('resize', resizeFrames);
+
+    $('.js-settings-form-submit').on('click', function() {
+        updateSettings();
+        createFrames();
+        Modal.close();
+    });
 
     $('.js-frames-form-submit').on('click', function() {
         var value = $framesTextarea.val();
@@ -58,7 +92,7 @@ $(function() {
         // Remove empty strings from the array.
         frames = $.grep(frames, function(s) { return s; });
         chrome.storage.sync.set({'frames': frames});
-        createFrames(frames);
+        createFrames();
         Modal.close();
     });
 });

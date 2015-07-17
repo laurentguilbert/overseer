@@ -101,19 +101,19 @@ nav {
 }
 
 .modal-frames,
-.modal-config {
+.modal-settings {
     background-color: #FFFFFF;
     display: none;
     padding: 30px;
     width: 600px;
 }
 
-.config-form label {
+.settings-form label {
     display: inline-block;
     width: 150px;
 }
 
-.config-form input {
+.settings-form input {
     width: 390px;
     margin-bottom: 20px;
 }
@@ -133,7 +133,8 @@ nav {
     width: 100%;
 }
 
-.frames-form-submit {
+.frames-form-submit,
+.settings-form-submit {
     background-color: #5CA762;
     border-radius: 3px;
     border: 0;

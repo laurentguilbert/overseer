@@ -79,6 +79,14 @@ nav {
     width: 600px;
 }
 
+.config-form label {
+    color: #888888;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .config-form textarea {
     display: block;
     font-size: 16px;

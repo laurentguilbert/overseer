@@ -1,9 +1,6 @@
 function createFrames(frames) {
     $('.js-frame').remove();
 
-    function iframeReady() {
-    }
-
     for (var i = 0; i < frames.length; i++) {
         var src = frames[i];
         if (!src) {
@@ -15,12 +12,11 @@ function createFrames(frames) {
             '<iframe src="' + src + '" frameborder="0"></iframe>' +
             '</div>' +
             '<a class="frame-title js-title" href="' + src +
-                '" target="_blank">Frame ' + i + '</a>' +
+                '" target="_blank">' + src + '</a>' +
             '</div>'
         );
 
         $('.js-frames').append($frame);
-        $frame.find('iframe').on('load', iframeReady);
     }
     resizeFrames();
 }

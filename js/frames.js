@@ -1,4 +1,7 @@
-function createFrames(frames) {
+var frames = [];
+var settings = {};
+
+function createFrames() {
     $('.js-frame').remove();
 
     for (var i = 0; i < frames.length; i++) {
@@ -11,8 +14,10 @@ function createFrames(frames) {
             '<div class="frame-iframe-wrapper js-iframe-wrapper">' +
             '<iframe src="' + src + '" frameborder="0"></iframe>' +
             '</div>' +
-            '<a class="frame-title js-title" href="' + src +
+            '<div class="frame-title-container">' +
+            '<a class="js-title" href="' + src +
                 '" target="_blank">' + src + '</a>' +
+            '</div>' +
             '</div>'
         );
 
@@ -22,9 +27,10 @@ function createFrames(frames) {
 }
 
 function resizeFrames() {
-    var resolutionX = 1280;
-    var resolutionY = 786;
-    var frameWidth = ($(window).width() - 60) / 3;
+    var resolutionX = settings.resolutionX;
+    var resolutionY = settings.resolutionY;
+    var frameWidth = ($(document).width() - settings.columns * 20) /
+        settings.columns;
     var scale = frameWidth / resolutionX;
 
     $('.js-frame').each(function() {
@@ -40,28 +46,56 @@ function resizeFrames() {
     });
 }
 
-$(function() {
-    var frames = [];
-    var $configTextarea = $('.js-config-form-textarea');
+function fillSettingsForm() {
+    var $form = $('.js-settings-form');
+    $form.find('input').each(function() {
+        $(this).val(settings[$(this).attr('name')]);
+    });
+}
 
-    chrome.storage.sync.get('frames', function(result) {
-        frames = result.frames;
-        $configTextarea.val(frames.join('\n'));
-        createFrames(frames);
+function updateSettings() {
+    var $form = $('.js-settings-form');
+    $form.find('input').each(function() {
+        settings[$(this).attr('name')] = $(this).val();
+    });
+    chrome.storage.sync.set({'settings': settings});
+}
+
+$(function() {
+    var defaultSettings = {
+        columns: 3,
+        resolutionX: 1280,
+        resolutionY: 786,
+    };
+
+    var $framesTextarea = $('.js-frames-form-textarea');
+
+    chrome.storage.sync.get('settings', function(result) {
+        settings = result.settings || defaultSettings;
+        fillSettingsForm(settings);
+
+        chrome.storage.sync.get('frames', function(result) {
+            frames = result.frames;
+            $framesTextarea.val(frames.join('\n'));
+            createFrames();
+        });
     });
 
     $(window).on('resize', resizeFrames);
 
-    $('.js-config-form-submit').on('click', function() {
-        var value = $configTextarea.val();
-        if (!value) {
-            return;
-        }
+    $('.js-settings-form-submit').on('click', function() {
+        updateSettings();
+        createFrames();
+        Modal.close();
+    });
+
+    $('.js-frames-form-submit').on('click', function() {
+        var value = $framesTextarea.val();
         frames = value.split('\n');
         // Remove empty strings from the array.
         frames = $.grep(frames, function(s) { return s; });
         chrome.storage.sync.set({'frames': frames});
-        createFrames(frames);
+        createFrames();
         Modal.close();
     });
 });

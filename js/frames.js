@@ -14,8 +14,10 @@ function createFrames() {
             '<div class="frame-iframe-wrapper js-iframe-wrapper">' +
             '<iframe src="' + src + '" frameborder="0"></iframe>' +
             '</div>' +
-            '<a class="frame-title js-title" href="' + src +
+            '<div class="frame-title-container">' +
+            '<a class="js-title" href="' + src +
                 '" target="_blank">' + src + '</a>' +
+            '</div>' +
             '</div>'
         );
 
@@ -27,7 +29,8 @@ function createFrames() {
 function resizeFrames() {
     var resolutionX = settings.resolutionX;
     var resolutionY = settings.resolutionY;
-    var frameWidth = ($(window).width() - settings.columns * 20) / settings.columns;
+    var frameWidth = ($(document).width() - settings.columns * 20) /
+        settings.columns;
     var scale = frameWidth / resolutionX;
 
     $('.js-frame').each(function() {

@@ -17,13 +17,8 @@ a {
     color: inherit;
 }
 
-button {
-    background: none;
-    border: 0;
-    color: inherit;
-    font: inherit;
-    line-height: normal;
-    overflow: visible;
+button:hover {
+    background-color: #78D07F;
 }
 
 input {
@@ -57,6 +52,23 @@ nav {
     width: 100%;
 }
 
+button {
+    background: none;
+    background-color: #5CA762;
+    border-radius: 3px;
+    border: 0;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 10px;
+    width: 100%;
+}
+
 .nav-item {
     cursor: pointer;
     display: inline-block;
@@ -73,7 +85,7 @@ nav {
 
 .frame {
     float: left;
-    margin: 20px 10px 0 10px;
+    margin: 10px 10px 0 10px;
     text-align: center;
 }
 
@@ -91,11 +103,14 @@ nav {
     width: 100%;
 }
 
-.frame-title {
+.frame-title-container {
     display: block;
-    font-weight: bold;
-    height: 60px;
+    height: 50px;
     overflow: hidden;
+}
+
+.frame-title-container a:hover {
+    text-decoration: underline;
 }
 
 .modal-close {
@@ -134,18 +149,6 @@ nav {
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
-}
-
-.frames-form-submit,
-.settings-form-submit {
-    background-color: #5CA762;
-    border-radius: 3px;
-    border: 0;
-    cursor: pointer;
-    display: block;
-    padding: 20px;
-    width: 100%;
-    font-weight: bold;
 }
 
 .modal-close {

@@ -8,7 +8,8 @@ body {
     background-color: #252525;
     color: #FEFEFE;
     font-family: Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 a {
@@ -16,13 +17,26 @@ a {
     color: inherit;
 }
 
-button {
-    background: none;
+button:hover {
+    background-color: #78D07F;
+}
+
+input {
+    padding: 0;
+    margin: 0;
     border: 0;
-    color: inherit;
-    font: inherit;
-    line-height: normal;
-    overflow: visible;
+    border: none;
+    padding: 10px;
+}
+
+input,
+textarea {
+    border: 1px solid #CCCCCC;
+}
+
+label {
+    color: #888888;
+    font-weight: bold;
 }
 
 nav {
@@ -38,10 +52,31 @@ nav {
     width: 100%;
 }
 
+button {
+    background: none;
+    background-color: #5CA762;
+    border-radius: 3px;
+    border: 0;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 10px;
+    width: 100%;
+}
+
 .nav-item {
     cursor: pointer;
-    font-size: 14px;
+    display: inline-block;
     font-weight: bold;
+}
+
+.nav-item + .nav-item {
+    margin-left: 30px;
 }
 
 .nav-item:hover {
@@ -50,7 +85,7 @@ nav {
 
 .frame {
     float: left;
-    margin: 20px 10px 0 10px;
+    margin: 10px 10px 0 10px;
     text-align: center;
 }
 
@@ -68,46 +103,52 @@ nav {
     width: 100%;
 }
 
+.frame-title-container {
+    display: block;
+    height: 50px;
+    overflow: hidden;
+}
+
+.frame-title-container a:hover {
+    text-decoration: underline;
+}
+
 .modal-close {
     top: 4px !important;
     right: 7px !important;
 }
 
-.modal-config {
+.modal-frames,
+.modal-settings {
     background-color: #FFFFFF;
     display: none;
     padding: 30px;
     width: 600px;
 }
 
-.config-form label {
-    color: #888888;
+.settings-form label {
+    display: inline-block;
+    width: 150px;
+}
+
+.settings-form input {
+    width: 390px;
+    margin-bottom: 20px;
+}
+
+.frames-form label {
     display: block;
-    font-size: 14px;
     margin-bottom: 10px;
     text-align: center;
 }
 
-.config-form textarea {
+.frames-form textarea {
     display: block;
-    font-size: 16px;
+    font-size: 13px;
     height: 400px;
-    line-height: 30px;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
-}
-
-.config-form-submit {
-    background-color: #5CA762;
-    border-radius: 3px;
-    border: 0;
-    cursor: pointer;
-    display: block;
-    padding: 20px;
-    width: 100%;
-    font-weight: bold;
-    font-size: 14px;
 }
 
 .modal-close {

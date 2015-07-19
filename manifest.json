@@ -1,6 +1,6 @@
 {
   "name": "Overseer",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "description": "Oversee a list of predefined pages from a single one in a mosaic-like display.",
   "author": "Laurent Guilbert",

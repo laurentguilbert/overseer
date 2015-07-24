@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Overseer - Options</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato" type="text/css" rel="stylesheet">
+    <link href="../css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <nav>
+      <div class="nav-items"><a class="nav-item js-nav-frames">Go back to frames</a></div><a href="frames.html" class="nav-logo"></a>
+    </nav>
+    <div class="notification success js-save-success-message">Options saved sucessfully!</div>
+    <div class="main-content">
+      <form class="options-form js-options-form">
+        <div class="inline-form-group">
+          <div class="form-field-description">
+            <label>Frames</label>
+            <p class="form-help-text">List of frames (url with protocol) separated by newlines.</p>
+          </div>
+          <textarea name="frames"></textarea>
+        </div>
+        <div class="inline-form-group">
+          <div class="form-field-description">
+            <label>Columns</label>
+            <p class="form-help-text">Number of frames displayed on each line.</p>
+          </div>
+          <input name="columns" type="number">
+        </div>
+        <div class="inline-form-group">
+          <div class="form-field-description">
+            <label>Resolution X</label>
+            <p class="form-help-text">Horizontal resolution of the frames.</p>
+          </div>
+          <input name="resolutionX" type="number">
+        </div>
+        <div class="inline-form-group">
+          <div class="form-field-description">
+            <label>Resolution Y</label>
+            <p class="form-help-text">Vertical resolution of the frames.</p>
+          </div>
+          <input name="resolutionY" type="number">
+        </div>
+        <button type="button" class="valid js-options-form-submit">Save</button>
+      </form>
+    </div>
+    <footer>Overseer by <a href="https://github.com/laurentguilbert" target="_blank">Laurent Guilbert</a> - Version 2.0</footer>
+    <script src="../js/libs/jquery-2.1.4.min.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/options.js"></script>
+  </body>
+</html>

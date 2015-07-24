@@ -1,10 +1,6 @@
 $(function() {
-  var defaultOptions = {
-    frames: '',
-    columns: 3,
-    resolutionX: 1280,
-    resolutionY: 786,
-  };
+  var background = chrome.extension.getBackgroundPage();
+  var defaultOptions = background.defaultOptions;
   var options = {};
 
   var $form = $('.js-options-form');
@@ -30,7 +26,7 @@ $(function() {
 
   function restore() {
     chrome.storage.sync.get('options', function(result) {
-      options = result.options;
+      options = $.extend({}, background.defaultOptions, result.options);
       $form.find(':input').each(function() {
         var $field = $(this);
         var name = $field.attr('name');

@@ -10,4 +10,6 @@ $(function() {
   $('.js-nav-frames').on('click', function() {
     location.href = chrome.runtime.getURL('html/frames.html');
   });
+
+  $('.js-manifest-version').text(chrome.runtime.getManifest().version);
 });

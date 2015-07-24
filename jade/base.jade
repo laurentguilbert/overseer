@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    block title
+      title Overseer
+      
+    link(href="http://fonts.googleapis.com/css?family=Lato" type="text/css" rel="stylesheet")
+      
+    link(href="../css/normalize.css" type="text/css" rel="stylesheet")
+    link(href="../css/style.css" type="text/css" rel="stylesheet")
+    
+  body
+    block nav
+      nav
+        .nav-items
+          block extra-nav
+          
+        a(href="frames.html" class="nav-logo")
+        
+    block content
+    block footer
+      footer Overseer by <a href="https://github.com/laurentguilbert" target="_blank">Laurent Guilbert</a> - Version 2.0
+    
+    script(src="../js/libs/jquery-2.1.4.min.js")
+    script(src="../js/nav.js")
+    block body-js

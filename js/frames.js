@@ -1,101 +1,63 @@
-var frames = [];
-var settings = {};
+$(function() {
+  var options = {};
 
-function createFrames() {
+  function createFrames() {
+    var frames = options.frames.split('\n');
+
     $('.js-frame').remove();
 
     for (var i = 0; i < frames.length; i++) {
-        var src = frames[i];
-        if (!src) {
-            continue;
-        }
-        var $frame = $(
-            '<div class="frame js-frame">' +
-            '<div class="frame-iframe-wrapper js-iframe-wrapper">' +
-            '<iframe src="' + src + '" frameborder="0"></iframe>' +
-            '</div>' +
-            '<div class="frame-title-container">' +
-            '<a class="js-title" href="' + src +
-                '" target="_blank">' + src + '</a>' +
-            '</div>' +
-            '</div>'
-        );
+      var src = frames[i];
+      if (!src) {
+        continue;
+      }
+      var $frame = $(
+        '<div class="frame js-frame">' +
+        '<div class="frame-iframe-wrapper js-iframe-wrapper">' +
+        '<iframe frameborder="0" scrolling="no"></iframe>' +
+        '</div>' +
+        '<div class="frame-title-container">' +
+        '<a class="frame-title js-title" ' +
+        'href="' + src + '" target="_blank">' + src + '</a>' +
+        '</div>' +
+        '</div>'
+      );
+      $('.js-frames').append($frame);
 
-        $('.js-frames').append($frame);
+      src += src.indexOf('?') !== -1 ? '&' : '?';
+      src += 'timestamp=' + (new Date()).getTime();
+      $frame.find('iframe').attr('src', src);
     }
     resizeFrames();
-}
+  }
 
-function resizeFrames() {
-    var resolutionX = settings.resolutionX;
-    var resolutionY = settings.resolutionY;
-    var frameWidth = ($(document).width() - settings.columns * 20) /
-        settings.columns;
+  function resizeFrames() {
+    var resolutionX = options.resolutionX;
+    var resolutionY = options.resolutionY;
+    var gutterWidth = 10;
+    var frameWidth = (
+      ($(document).width() - options.columns * gutterWidth - gutterWidth) /
+      options.columns
+    );
     var scale = frameWidth / resolutionX;
 
     $('.js-frame').each(function() {
-        var $frame = $(this);
-        var $wrapper = $frame.find('.js-iframe-wrapper');
-        var $iframe = $wrapper.find('iframe');
+      var $frame = $(this);
+      var $wrapper = $frame.find('.js-iframe-wrapper');
+      var $iframe = $wrapper.find('iframe');
 
-        $frame.width(frameWidth);
-        $wrapper.height(frameWidth * (resolutionY / resolutionX));
-        $iframe.css({
-            transform: 'scale(' + scale + ')',
-        });
+      $frame.width(frameWidth);
+      $wrapper.height(frameWidth * (resolutionY / resolutionX));
+      $iframe.css({
+        transform: 'scale(' + scale + ')',
+      });
     });
-}
+  }
 
-function fillSettingsForm() {
-    var $form = $('.js-settings-form');
-    $form.find('input').each(function() {
-        $(this).val(settings[$(this).attr('name')]);
-    });
-}
+  $(window).on('resize', resizeFrames);
 
-function updateSettings() {
-    var $form = $('.js-settings-form');
-    $form.find('input').each(function() {
-        settings[$(this).attr('name')] = $(this).val();
-    });
-    chrome.storage.sync.set({'settings': settings});
-}
-
-$(function() {
-    var defaultSettings = {
-        columns: 3,
-        resolutionX: 1280,
-        resolutionY: 786,
-    };
-
-    var $framesTextarea = $('.js-frames-form-textarea');
-
-    chrome.storage.sync.get('settings', function(result) {
-        settings = result.settings || defaultSettings;
-        fillSettingsForm(settings);
-
-        chrome.storage.sync.get('frames', function(result) {
-            frames = result.frames;
-            $framesTextarea.val(frames.join('\n'));
-            createFrames();
-        });
-    });
-
-    $(window).on('resize', resizeFrames);
-
-    $('.js-settings-form-submit').on('click', function() {
-        updateSettings();
-        createFrames();
-        Modal.close();
-    });
-
-    $('.js-frames-form-submit').on('click', function() {
-        var value = $framesTextarea.val();
-        frames = value.split('\n');
-        // Remove empty strings from the array.
-        frames = $.grep(frames, function(s) { return s; });
-        chrome.storage.sync.set({'frames': frames});
-        createFrames();
-        Modal.close();
-    });
+  chrome.storage.sync.get('options', function(result) {
+    options = result.options;
+    createFrames();
+  });
 });

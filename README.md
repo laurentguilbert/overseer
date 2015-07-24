@@ -8,4 +8,4 @@ Oversee any number of pages from a single tile interface.
 
 To render templates using jade use the following command:
 
-`jade --watch jade/* -out html --pretty`
+`jade --watch jade/* --out html --pretty`

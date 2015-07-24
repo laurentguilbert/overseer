@@ -4,3 +4,10 @@ chrome.browserAction.onClicked.addListener(function() {
         'selected': true
     });
 });
+
+var defaultOptions = {
+  frames: '',
+  columns: 3,
+  resolutionX: 1280,
+  resolutionY: 786,
+};

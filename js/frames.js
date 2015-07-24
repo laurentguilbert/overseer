@@ -1,4 +1,6 @@
 $(function() {
+  var background = chrome.extension.getBackgroundPage();
+  var defaultOptions = background.defaultOptions;
   var options = {};
 
   function createFrames() {
@@ -57,7 +59,7 @@ $(function() {
   $(window).on('resize', resizeFrames);
 
   chrome.storage.sync.get('options', function(result) {
-    options = result.options;
+    options = result.options || defaultOptions;
     createFrames();
   });
 });
